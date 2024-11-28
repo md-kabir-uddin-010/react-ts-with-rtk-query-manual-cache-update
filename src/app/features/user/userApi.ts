@@ -1,16 +1,10 @@
 import { apiSlice } from "../api/apiSlice";
 
 interface User {
-  id?: string;
-  name?: string;
-  email?: string;
-  password?: string;
-  [key: string]: unknown;
-}
-
-interface ApiResponse {
-  data: User;
-  [key: string]: unknown;
+  id: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
 export const userApi = apiSlice.injectEndpoints({
@@ -21,7 +15,7 @@ export const userApi = apiSlice.injectEndpoints({
     }),
 
     // add user
-    addUser: builder.mutation<ApiResponse, Partial<User>>({
+    addUser: builder.mutation({
       query: (body) => ({
         url: "users",
         method: "POST",
